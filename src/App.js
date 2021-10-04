@@ -5,6 +5,12 @@ import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import About from './components/About';
 import Alert from './components/Alert';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -24,13 +30,13 @@ function App() {
   }
 
   const toggleMode = () => {
-    if(mode === "light"){
+    if (mode === "light") {
       setMode("dark");
       setBtnText("Enable Light Mode");
       document.body.style.backgroundColor = "black";
       showAlert("Dark mode has been enabled!", "success");
     }
-    else{
+    else {
       setMode("light");
       setBtnText("Enable Dark Mode");
       document.body.style.backgroundColor = "white";
@@ -40,12 +46,20 @@ function App() {
 
   return (
     <>
-      <Navbar title="TextUtils" themeMode={mode} toggleThemeMode={toggleMode} toggleBtnText={btnText}/>
-      <Alert alert={alert}/>
-      <div className="container my-3">
-        <TextForm heading="Enter Text" themeMode={mode} showAlert={showAlert}/>
-      </div> 
-      <About/>
+      <Router>
+        <Navbar title="TextUtils" themeMode={mode} toggleThemeMode={toggleMode} toggleBtnText={btnText} />
+        <Alert alert={alert} />
+        <div className="container my-3">
+          <Switch>  
+            <Route exact path="/about">
+              <About themeMode={mode}/>
+            </Route>
+            <Route exact path="/">
+              <TextForm heading="Enter Text" themeMode={mode} showAlert={showAlert} />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     </>
   );
 }
