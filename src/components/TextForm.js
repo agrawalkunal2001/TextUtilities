@@ -56,7 +56,7 @@ export default function TextForm(props) {
                 <p>{text}</p>
                 <h2>Your text summary</h2>
                 <p>{text.split(" ").filter((element) => { return element.length !== 0 }). /* Earlier text utilities showed words even if there were only spaces and no actual words because we indicated to increase words when a space occurred. This issue was fixed using a filter which takes in a function and adds the element/word in the array only if it returned true. Here if an element/word is empty string, false is returned, it is not added in array and not counted as a word */ length} words, {text.length} characters</p>
-                <p>Can be read within {0.008 * text.split(" ").length} minutes</p>
+                <p>Can be read within {0.008 * text.split(" ").filter((element) => { return element.length !== 0 }).length} minutes</p>
             </div>
         </>
     )
