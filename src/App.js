@@ -45,7 +45,7 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar title="TextUtils" themeMode={mode} toggleThemeMode={toggleMode} toggleBtnText={btnText} />
+        <Navbar title="TextUtilities" themeMode={mode} toggleThemeMode={toggleMode} toggleBtnText={btnText} />
         <Alert alert={alert} />
         <div className="container my-3">
           <Switch> 
