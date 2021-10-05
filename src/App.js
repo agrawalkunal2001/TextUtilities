@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { useState } from 'react'
 import Navbar from './components/Navbar';
@@ -8,8 +7,7 @@ import Alert from './components/Alert';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 function App() {
@@ -50,9 +48,9 @@ function App() {
         <Navbar title="TextUtils" themeMode={mode} toggleThemeMode={toggleMode} toggleBtnText={btnText} />
         <Alert alert={alert} />
         <div className="container my-3">
-          <Switch>  
+          <Switch> 
             <Route exact path="/about">
-              <About themeMode={mode}/>
+              <About themeMode={mode} />
             </Route>
             <Route exact path="/">
               <TextForm heading="Enter Text" themeMode={mode} showAlert={showAlert} />
