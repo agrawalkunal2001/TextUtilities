@@ -27,7 +27,7 @@ function App() {
     }, 1500);
   }
 
-  const toggleMode = () => {
+  const toggleMode = (colorCls) => {
     if (mode === "light") {
       setMode("dark");
       setBtnText("Enable Light Mode");
@@ -48,7 +48,7 @@ function App() {
         <Navbar title="TextUtilities" themeMode={mode} toggleThemeMode={toggleMode} toggleBtnText={btnText} />
         <Alert alert={alert} />
         <div className="container my-3">
-          <Switch> 
+          <Switch>
             <Route exact path="/about">
               <About themeMode={mode} />
             </Route>

@@ -22,9 +22,7 @@ export default function TextForm(props) {
     }
 
     const handleCopyClick = () => {
-        let text = document.getElementById("myBox"); // Copies text
-        text.select();
-        navigator.clipboard.writeText(text.value);
+        navigator.clipboard.writeText(text);
         props.showAlert("Copied text to clipboard!", "success");
     }
 
@@ -55,8 +53,8 @@ export default function TextForm(props) {
                 <h2>Preview</h2>
                 <p>{text.length > 0 ? text : "Nothing to preview!"}</p>
                 <h2>Your Text Summary</h2>
-                <p>{text.split(" ").filter((element) => { return element.length !== 0 }). /* Earlier text utilities showed words even if there were only spaces and no actual words because we indicated to increase words when a space occurred. This issue was fixed using a filter which takes in a function and adds the element/word in the array only if it returned true. Here if an element/word is empty string, false is returned, it is not added in array and not counted as a word */ length} words, {text.length} characters</p>
-                <p>Can be read within {0.008 * text.split(" ").filter((element) => { return element.length !== 0 }).length} minutes</p>
+                <p>{text.split(/\s+/).filter((element) => { return element.length !== 0 })./* Earlier text utilities showed words even if there were only spaces and no actual words because we indicated to increase words when a space occurred. This issue was fixed using a filter which takes in a function and adds the element/word in the array only if it returned true. Here if an element/word is empty string, false is returned, it is not added in array and not counted as a word */length} words, {text.length} characters</p>
+                <p>Can be read within {0.008 * text.split(/\s+/).filter((element) => { return element.length !== 0 }).length} minutes</p>
             </div>
         </>
     )
