@@ -7,9 +7,11 @@ export default function Alert(props) {
     }
 
     return (
-        props.alert &&  // if props.alert is false, nothing will be evaluated 
-        <div className={`alert alert-${props.alert.type} alert-dismissible fade show`} role="alert">
-            <strong>{capital(props.alert.type)}</strong>: {props.alert.msg}
+        <div style={{height: "50px"}}>
+            {props.alert &&  // if props.alert is false, nothing will be evaluated
+            <div className={`alert alert-${props.alert.type} alert-dismissible fade show`} role="alert">
+                <strong>{capital(props.alert.type)}</strong>: {props.alert.msg}
+            </div>}
         </div>
     )
 }
